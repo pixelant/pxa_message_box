@@ -9,11 +9,11 @@ call_user_func(
             'Resultify.ResultifyMessageBox',
             'Message',
             [
-                'message' => 'list'
+                'Message' => 'list'
             ],
             // non-cacheable actions
             [
-                'message' => 'list'
+                'Message' => 'list'
             ]
         );
 

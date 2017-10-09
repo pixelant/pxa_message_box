@@ -18,13 +18,23 @@ namespace Resultify\ResultifyMessageBox\Controller;
 class MessageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
+     * @var \Resultify\ResultifyMessageBox\Domain\Repository\MessageRepository
+     * @inject
+     */
+    protected $messageRepository;
+
+    /**
      * action list
      *
      * @return void
      */
     public function listAction()
     {
-        $messages = $this->messageRepository->findAll();
+        $data = $this->configurationManager->getContentObject()->data;
+        $storagePids = explode(',',$data['pages']);
+
+        $messages = $this->messageRepository->findAllRespectStorage($storagePids);
+
         $this->view->assign('messages', $messages);
     }
 }

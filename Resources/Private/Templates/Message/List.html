@@ -13,33 +13,25 @@
 	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 	<f:section name="content">
-		<h1>Listing for Message</h1>
-
 		<f:flashMessages />
 
-		<table  class="tx_resultifymessagebox" >
-		<f:debug>afgadhaddbfda</f:debug>
-			<tr>
-				<th><f:translate key="tx_resultifymessagebox_domain_model_message.date" /></th>
-				<th><f:translate key="tx_resultifymessagebox_domain_model_message.author" /></th>
-				<th><f:translate key="tx_resultifymessagebox_domain_model_message.headline" /></th>
-				<th><f:translate key="tx_resultifymessagebox_domain_model_message.text" /></th>
-				<th> </th>
-				<th> </th>
-			</tr>
-
+		<f:if condition="{messages}">
 			<f:for each="{messages}" as="message">
-				<tr>
-					<td><f:link.action action="show" arguments="{message : message}"> {message.date -> f:format.date()}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{message : message}"> {message.author}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{message : message}"> {message.headline}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{message : message}"> {message.text}</f:link.action></td>
-					<td><f:link.action action="edit" arguments="{message : message}">Edit</f:link.action></td>
-					<td><f:link.action action="delete" arguments="{message : message}">Delete</f:link.action></td>
-				</tr>
+				<div class="message-box">
+					<div class="close-message__btn js__close-message"></div>
+					<div class="message-box__info">
+						<span class="message-box__info-date">{f:format.date(date: message.date, format: 'Y-m-d')}</span>
+						<span class="message-box__info-author">{message.author}</span>
+					</div>
+					<f:if condition="{message.headline}">
+						<h3 class="message-box__header">{message.headline}</h3>
+					</f:if>
+					<f:if condition="{message.text}">
+							<p class="message-box__text">{message.text}</p>
+					</f:if>
+				</div>
 			</f:for>
-		</table>
+		</f:if>
 
-		<f:link.action action="new">New Message</f:link.action>
 	</f:section>
 </html>
