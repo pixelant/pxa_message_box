@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-09T10:54:42Z" product-name="resultify_message_box">
+		<header/>
+		<body>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message">
+				<source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.author">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.headline">
+				<source>Headline</source>
+			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_resultify_message_box_message.name">
+				<source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_resultify_message_box_message.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
