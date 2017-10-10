@@ -24,6 +24,35 @@ plugin.tx_resultifymessagebox_message {
     }
 }
 
+ajaxCall = PAGE
+ajaxCall {
+    typeNum = 2378954
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        additionalHeaders = Content-type:application/json
+        no_cache = 1
+        debug = 0
+    }
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = ResultifyMessageBox
+        pluginName = Message
+        vendorName = Resultify
+        controller = MessageController
+        action = ajax
+        view < plugin.tx_resultifymessagebox_message.view
+        persistence < plugin.tx_resultifymessagebox_message.persistence
+        settings < plugin.tx_resultifymessagebox_message.settings
+    }
+}
+
+page.includeJSFooter {
+    messageBoxJs = EXT:resultify_message_box/Resources/Public/Js/messageBox.js
+}
+
 # these classes are only used in auto-generated templates
 plugin.tx_resultifymessagebox._CSS_DEFAULT_STYLE (
     textarea.f3-form-error {

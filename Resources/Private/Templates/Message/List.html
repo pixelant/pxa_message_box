@@ -14,11 +14,11 @@
 
 	<f:section name="content">
 		<f:flashMessages />
-
+		<f:debug>{messages}</f:debug>
 		<f:if condition="{messages}">
 			<f:for each="{messages}" as="message">
 				<div class="message-box">
-					<div class="close-message__btn js__close-message"></div>
+					<f:link.action action="ajax" pageType="2378954" id="1" arguments="{uid: message.uid}"><div class="close-message__btn js__close-message"></div></f:link.action>
 					<div class="message-box__info">
 						<span class="message-box__info-date">{f:format.date(date: message.date, format: 'Y-m-d')}</span>
 						<span class="message-box__info-author">{message.author}</span>
@@ -32,6 +32,8 @@
 				</div>
 			</f:for>
 		</f:if>
-
+		<f:link.action action="ajax" pageType="2378954" id="123">action link</f:link.action>
+		<f:link.action action="ajax" pageType="2378954" id="1" arguments="{uid: 2}">test link</f:link.action>
+		<!-- <a href="#" action="ajax" pageType="2378954" id="1">Test link</a> -->
 	</f:section>
 </html>

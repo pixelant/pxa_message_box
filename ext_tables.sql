@@ -40,3 +40,10 @@ CREATE TABLE tx_resultifymessagebox_domain_model_message (
 	KEY language (l10n_parent,sys_language_uid)
 
 );
+
+#
+# Table structure for table 'fe_users'
+#
+CREATE TABLE fe_users (
+    seen_messages_ids varchar(255) DEFAULT '' NOT NULL,
+);

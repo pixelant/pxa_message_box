@@ -36,15 +36,19 @@ class MessageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * Find messages
 	 *
 	 * @param int $storagePid storagePid to get messages from
+	 * @param array[String] $messagesUids
 	 * @return QueryResult<Message> found comments
 	 */
-	public function findAllRespectStorage($storagePid) {
+	public function findByUidRespectStorage($storagePid, $messagesUids) {
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setStoragePageIds($storagePid);
+		$query->matching(
+			$query->logicalNot(
+				$query->in('uid', $messagesUids)
+			)
+		);
 		
-		$messages = $query->execute();
-
-		return $messages;
+		return $query->execute();
 	}
 }
 ?>
