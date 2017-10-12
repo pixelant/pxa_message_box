@@ -83,12 +83,12 @@ class MessageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             }
             
             if(DatabaseUtility::updateUser($user['uid'], $messagesUidsToUpdate)){
-                echo json_encode(array(1 => "updateOK"));
+                echo json_encode(array("result" => "updateOK"));
             }else{
-                echo json_encode(array(1 => "updateError"));
+                echo json_encode(array("result" => "updateError"));
             }
         }else{
-            echo json_encode(array(1 => "updateError"));
+            echo json_encode(array("result" => "updateError"));
         }
     }
 }
