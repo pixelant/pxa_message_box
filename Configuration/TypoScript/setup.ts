@@ -49,6 +49,10 @@ ajaxCall {
     }
 }
 
+page.includeCSS {
+    messageBoxCss = EXT:resultify_message_box/Resources/Public/Css/messageBox.css
+}
+
 page.includeJSFooter {
     messageBoxJs = EXT:resultify_message_box/Resources/Public/Js/messageBox.js
 }

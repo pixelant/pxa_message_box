@@ -1,0 +1,35 @@
+.message-box {
+    background: antiquewhite;
+    padding: 30px 25px 18px;
+    position: relative;
+}
+
+.message-box__info-date:after {
+    content: '|';
+    width: 1px;
+    height: 17px;
+    display: inline-block;
+    margin: 0 5px;
+    position: relative;
+    top: 1px;
+}
+
+.message-box__header {
+    font-size: 18px;
+    margin: 12px 0 4px;
+}
+
+.close-message__btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 1;
+    color: #046904;
+    font-size: 20px;
+    cursor: pointer;
+
+    
+}
+.close-message__btn:after {
+    content: "\00d7";
+}
