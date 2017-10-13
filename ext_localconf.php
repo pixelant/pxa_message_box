@@ -43,6 +43,12 @@ call_user_func(
 				\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
 				['source' => 'EXT:resultify_message_box/Resources/Public/Icons/user_plugin_message.svg']
 			);
-		
+
+	# clean up task
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Resultify\ResultifyMessageBox\Task\CleanUpFeUserMessagesTask'] = array(
+        'extension'        => 'ResultifyMessageBox',
+        'title'            => 'Clean Up FE users message boxes',
+        'description'      => 'Clean up FE users redundant messages ids'
+    );
     }
 );
