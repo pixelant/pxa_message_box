@@ -6,6 +6,21 @@
 			<trans-unit id="tx_resultify_message_box_message.seen_messages_ids">
 				<source>Messages IDs which was seen by this FE User</source>
 			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.author">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.headline">
+				<source>Headline</source>
+			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message">
+				<source>Message</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
