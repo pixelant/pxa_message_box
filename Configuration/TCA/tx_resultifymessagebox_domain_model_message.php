@@ -2,7 +2,7 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message',
-        'label' => 'date',
+        'label' => 'headline',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
