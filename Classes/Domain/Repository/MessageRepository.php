@@ -12,6 +12,8 @@ namespace Resultify\ResultifyMessageBox\Domain\Repository;
  *
  ***/
 
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 /**
  *
  *
@@ -42,6 +44,11 @@ class MessageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function findByUidRespectStorage($storagePid, $messagesUids) {
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setStoragePageIds($storagePid);
+		$query->setOrderings(
+		    array(
+		        'date' => $this->getSortingDirection()
+		    )
+		);
 		$query->matching(
 			$query->logicalNot(
 				$query->in('uid', $messagesUids)
@@ -49,6 +56,37 @@ class MessageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		);
 		
 		return $query->execute();
+	}
+
+	/**
+	 * Returns order direction
+	 *
+	 * @return string
+	 */
+	public function getSortingDirection() {
+		if ($this->getInvertSorting() === TRUE) {
+			return QueryInterface::ORDER_DESCENDING;
+		}
+		return QueryInterface::ORDER_ASCENDING;
+	}
+
+	/**
+	 * Gets invert sorting flag
+	 *
+	 * @return bool
+	 */
+	public function getInvertSorting() {
+		return $this->invertSorting;
+	}
+
+	/**
+	 * Sets invert sorting flag
+	 *
+	 * @param bool $invertSorting
+	 * @return void
+	 */
+	public function setInvertSorting($invertSorting) {
+		$this->invertSorting = $invertSorting;
 	}
 }
 ?>

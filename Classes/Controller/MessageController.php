@@ -44,6 +44,9 @@ class MessageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             // get ids of messages already seen by user
             $userData = DatabaseUtility::getUserData($user['uid']);
             $messagesUids = explode(',',$userData);
+
+            // Set sorting
+            $this->messageRepository->setInvertSorting(boolval($this->settings['invertSorting']));
             
             // get appropriate messages
             $messages = $this->messageRepository->findByUidRespectStorage($storagePids, $messagesUids);

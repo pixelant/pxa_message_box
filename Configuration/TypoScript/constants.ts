@@ -12,4 +12,8 @@ plugin.tx_resultifymessagebox_message {
         # cat=plugin.tx_resultifymessagebox_message//a; type=string; label=Default storage PID
         storagePid =
     }
+    settings {
+        # cat=plugin.tx_resultifymessagebox_message//b; type=boolean; label=Invert sorting
+        invertSorting = 1
+    }
 }

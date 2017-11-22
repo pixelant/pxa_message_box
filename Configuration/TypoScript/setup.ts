@@ -22,6 +22,10 @@ plugin.tx_resultifymessagebox_message {
     mvc {
         #callDefaultActionIfActionCantBeResolved = 1
     }
+    settings {
+        # Set invert sorting for messages
+        invertSorting = {$plugin.tx_resultifymessagebox_message.settings.invertSorting}
+    }
 }
 
 ajaxCall = PAGE
