@@ -8,7 +8,8 @@ call_user_func(
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
             'Resultify.ResultifyMessageBox',
             'Message',
-            'Message'
+            'Message',
+            'EXT:resultify_message_box/Resources/Public/Icons/user_plugin_message.svg'
         );
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('resultify_message_box', 'Configuration/TypoScript', 'Message Box');
