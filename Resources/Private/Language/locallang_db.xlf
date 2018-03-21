@@ -21,6 +21,13 @@
 			<trans-unit id="tx_resultifymessagebox_domain_model_message">
 				<source>Message</source>
 			</trans-unit>
+
+			<trans-unit id="tx_resultify_message_box_message.name">
+			    <source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_resultify_message_box_message.description">
+			    <source>Adds possibility to show message boxes (notifications) to FE users.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

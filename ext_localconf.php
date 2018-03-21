@@ -22,7 +22,7 @@ call_user_func(
         'mod {
             wizards.newContentElement.wizardItems.plugins {
                 elements {
-                    message {
+                    resultifymessagebox_message {
                         iconIdentifier = resultify_message_box-plugin-message
                         title = LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultify_message_box_message.name
                         description = LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultify_message_box_message.description
@@ -32,17 +32,18 @@ call_user_func(
                         }
                     }
                 }
-                show = *
             }
        }'
     );
-		$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-		
-			$iconRegistry->registerIcon(
-				'resultify_message_box-plugin-message',
-				\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-				['source' => 'EXT:resultify_message_box/Resources/Public/Icons/user_plugin_message.svg']
-			);
+
+    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \TYPO3\CMS\Core\Imaging\IconRegistry::class
+    );
+    $iconRegistry->registerIcon(
+        'resultify_message_box-plugin-message',
+        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        ['source' => 'EXT:resultify_message_box/Resources/Public/Icons/user_plugin_message.svg']
+    );
 
 	# clean up task
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Resultify\ResultifyMessageBox\Task\CleanUpFeUserMessagesTask'] = array(
