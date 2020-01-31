@@ -1,27 +1,19 @@
 <?php
+
 namespace Resultify\ResultifyMessageBox\Domain\Model;
 
-/***
- *
- * This file is part of the "Message Box" Extension for TYPO3 CMS.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- *  (c) 2017 Alex <alex@pixelant.se>, Resultify
- *
- ***/
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Message
  */
-class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Message extends AbstractEntity
 {
     /**
      * date
      *
      * @var \DateTime
-     * @validate NotEmpty
      */
     protected $date = null;
 
@@ -29,7 +21,6 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * author
      *
      * @var string
-     * @validate NotEmpty
      */
     protected $author = '';
 
@@ -37,7 +28,6 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * headline
      *
      * @var string
-     * @validate NotEmpty
      */
     protected $headline = '';
 
@@ -45,9 +35,22 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * text
      *
      * @var string
-     * @validate NotEmpty
      */
     protected $text = '';
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUser>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     */
+    protected $seenBy = null;
+
+    /**
+     */
+    public function __construct()
+    {
+        $this->seenBy = new ObjectStorage();
+    }
+
 
     /**
      * Returns the date
@@ -131,5 +134,37 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setText($text)
     {
         $this->text = $text;
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getSeenBy(): ObjectStorage
+    {
+        return $this->seenBy;
+    }
+
+    /**
+     * @param ObjectStorage $seenBy
+     */
+    public function setSeenBy(ObjectStorage $seenBy): void
+    {
+        $this->seenBy = $seenBy;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $frontendUser
+     */
+    public function addSeenBy(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $frontendUser)
+    {
+        $this->seenBy->attach($frontendUser);
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $frontendUser
+     */
+    public function removeSeenBy(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $frontendUser)
+    {
+        $this->seenBy->detach($frontendUser);
     }
 }

@@ -1,4 +1,3 @@
-
 plugin.tx_resultifymessagebox_message {
     view {
         # cat=plugin.tx_resultifymessagebox_message/file; type=string; label=Path to template root (FE)
@@ -8,12 +7,14 @@ plugin.tx_resultifymessagebox_message {
         # cat=plugin.tx_resultifymessagebox_message/file; type=string; label=Path to template layouts (FE)
         layoutRootPath = EXT:resultify_message_box/Resources/Private/Layouts/
     }
+
     persistence {
         # cat=plugin.tx_resultifymessagebox_message//a; type=string; label=Default storage PID
         storagePid =
     }
+
     settings {
         # cat=plugin.tx_resultifymessagebox_message//b; type=boolean; label=Invert sorting
-        invertSorting = 1
+        invertSorting = 0
     }
 }

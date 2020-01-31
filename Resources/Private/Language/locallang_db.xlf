@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-09T10:54:42Z" product-name="resultify_message_box">
+	<file source-language="en"
+		  datatype="plaintext"
+		  original="messages"
+		  date="2017-10-09T10:54:42Z"
+		  product-name="resultify_message_box">
 		<header/>
 		<body>
-			<trans-unit id="tx_resultify_message_box_message.seen_messages_ids">
-				<source>Messages IDs which was seen by this FE User</source>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message">
+				<source>Message</source>
 			</trans-unit>
 			<trans-unit id="tx_resultifymessagebox_domain_model_message.date">
 				<source>Date</source>
@@ -18,15 +22,15 @@
 			<trans-unit id="tx_resultifymessagebox_domain_model_message.text">
 				<source>Text</source>
 			</trans-unit>
-			<trans-unit id="tx_resultifymessagebox_domain_model_message">
-				<source>Message</source>
+			<trans-unit id="tx_resultifymessagebox_domain_model_message.seen_by">
+				<source>Seen by users</source>
 			</trans-unit>
 
 			<trans-unit id="tx_resultify_message_box_message.name">
-			    <source>Message</source>
+				<source>Message</source>
 			</trans-unit>
 			<trans-unit id="tx_resultify_message_box_message.description">
-			    <source>Adds possibility to show message boxes (notifications) to FE users.</source>
+				<source>Adds possibility to show message boxes (notifications) to FE users.</source>
 			</trans-unit>
 		</body>
 	</file>

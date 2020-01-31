@@ -1,19 +1,18 @@
 {
-    "name": "resultify/resultify-message-box",
-    "type": "typo3-cms-extension",
-    "description": "Adds possibility to show message boxes (notifications) to FE users.",
-    "authors": [
-        {
-            "name": "Alex",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "typo3/cms-core": "^8.7.1 || ^9.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "Resultify\\ResultifyMessageBox\\": "Classes"
-        }
+  "name": "resultify/resultify-message-box",
+  "type": "typo3-cms-extension",
+  "description": "Adds possibility to show message boxes (notifications) to FE users.",
+  "authors": [
+    {
+      "name": "Pixelant"
     }
+  ],
+  "require": {
+    "typo3/cms-core": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Resultify\\ResultifyMessageBox\\": "Classes"
+    }
+  }
 }

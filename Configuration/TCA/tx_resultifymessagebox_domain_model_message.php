@@ -6,7 +6,6 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -17,25 +16,28 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'date,author,headline,text',
-        'iconfile' => 'EXT:resultify_message_box/Resources/Public/Icons/tx_resultifymessagebox_domain_model_message.gif'
+        'iconfile' => 'EXT:resultify_message_box/Resources/Public/Icons/message.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, author, headline, text',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, author, headline, text, seen_by',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, author, headline, text, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, author, headline, text,
+         --div--;LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.seen_by, seen_by,
+         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
+            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'special' => 'languages',
                 'items' => [
                     [
-                        'LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages',
+                        'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
                         -1,
                         'flags-multiple'
                     ]
@@ -46,7 +48,7 @@ return [
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
+            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -63,17 +65,9 @@ return [
                 'type' => 'passthrough',
             ],
         ],
-        't3ver_label' => [
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'max' => 255,
-            ],
-        ],
         'hidden' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -88,7 +82,7 @@ return [
             'behaviour' => [
                 'allowLanguageSynchronization' => true
             ],
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
+            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -102,7 +96,7 @@ return [
             'behaviour' => [
                 'allowLanguageSynchronization' => true
             ],
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
+            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -149,11 +143,18 @@ return [
             'label' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.text',
             'config' => [
                 'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'eval' => 'trim,required'
+                'enableRichtext' => true,
             ]
         ],
-    
+        'seen_by' => [
+            'exclide' => true,
+            'label' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.seen_by',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'fe_users',
+                'MM' => 'tx_resultifymessagebox_message_feuser_mm',
+            ]
+        ],
     ],
 ];
