@@ -51,6 +51,6 @@ PxaMessageBoxAjaxCall {
 }
 
 page {
-    includeCSS.messageBoxCss = EXT:resultify_message_box/Resources/Public/Css/messageBox.css
-    includeJSFooter.messageBoxJs = EXT:resultify_message_box/Resources/Public/Js/messageBox.js
+    includeCSS.messageBoxCss = EXT:pxa_message_box/Resources/Public/Css/messageBox.css
+    includeJSFooter.messageBoxJs = EXT:pxa_message_box/Resources/Public/Js/messageBox.js
 }

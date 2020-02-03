@@ -1,6 +1,6 @@
 <?php
 
-namespace Resultify\ResultifyMessageBox\Domain\Model;
+namespace Pixelant\PxaMessageBox\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;

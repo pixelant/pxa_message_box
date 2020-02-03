@@ -1,9 +1,9 @@
 <?php
 
-namespace Resultify\ResultifyMessageBox\Controller;
+namespace Pixelant\PxaMessageBox\Controller;
 
-use Resultify\ResultifyMessageBox\Domain\Model\Message;
-use Resultify\ResultifyMessageBox\Domain\Repository\MessageRepository;
+use Pixelant\PxaMessageBox\Domain\Model\Message;
+use Pixelant\PxaMessageBox\Domain\Repository\MessageRepository;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;

@@ -5,7 +5,7 @@ This extension adds possibility to add cross-browser/cross-device messages in FE
 ## Installation
 
 ####The following steps are required to active the Rating and Comments for a TYPO3 installation:
-1. Install the extension called resultify_message_box
+1. Install the extension called pxa_message_box
 2. Active the extension using "Extensions" module
 3. Add the TypoScript called "Message Box" to the site roots where the features should be activated
 

@@ -1,5 +1,5 @@
 {
-  "name": "resultify/resultify-message-box",
+  "name": "pixelant/pxa-message-box",
   "type": "typo3-cms-extension",
   "description": "Adds possibility to show message boxes (notifications) to FE users.",
   "authors": [
@@ -12,7 +12,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Resultify\\ResultifyMessageBox\\": "Classes"
+      "Pixelant\\PxaMessageBox\\": "Classes"
     }
   }
 }

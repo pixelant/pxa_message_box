@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message',
+        'title' => 'LLL:EXT:pxa_message_box/Resources/Private/Language/locallang_db.xlf:tx_pxamessagebox_domain_model_message',
         'label' => 'headline',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -16,14 +16,14 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'date,author,headline,text',
-        'iconfile' => 'EXT:resultify_message_box/Resources/Public/Icons/message.svg'
+        'iconfile' => 'EXT:pxa_message_box/Resources/Public/Icons/message.svg'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, author, headline, text, seen_by',
     ],
     'types' => [
         '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, author, headline, text,
-         --div--;LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.seen_by, seen_by,
+         --div--;LLL:EXT:pxa_message_box/Resources/Private/Language/locallang_db.xlf:tx_pxamessagebox_domain_model_message.seen_by, seen_by,
          --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'
         ],
     ],
@@ -56,8 +56,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_resultifymessagebox_domain_model_message',
-                'foreign_table_where' => 'AND tx_resultifymessagebox_domain_model_message.pid=###CURRENT_PID### AND tx_resultifymessagebox_domain_model_message.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_pxamessagebox_domain_model_message',
+                'foreign_table_where' => 'AND tx_pxamessagebox_domain_model_message.pid=###CURRENT_PID### AND tx_pxamessagebox_domain_model_message.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -111,7 +111,7 @@ return [
 
         'date' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.date',
+            'label' => 'LLL:EXT:pxa_message_box/Resources/Private/Language/locallang_db.xlf:tx_pxamessagebox_domain_model_message.date',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -122,7 +122,7 @@ return [
         ],
         'author' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.author',
+            'label' => 'LLL:EXT:pxa_message_box/Resources/Private/Language/locallang_db.xlf:tx_pxamessagebox_domain_model_message.author',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -131,7 +131,7 @@ return [
         ],
         'headline' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.headline',
+            'label' => 'LLL:EXT:pxa_message_box/Resources/Private/Language/locallang_db.xlf:tx_pxamessagebox_domain_model_message.headline',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -140,7 +140,7 @@ return [
         ],
         'text' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.text',
+            'label' => 'LLL:EXT:pxa_message_box/Resources/Private/Language/locallang_db.xlf:tx_pxamessagebox_domain_model_message.text',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -148,7 +148,7 @@ return [
         ],
         'seen_by' => [
             'exclide' => true,
-            'label' => 'LLL:EXT:resultify_message_box/Resources/Private/Language/locallang_db.xlf:tx_resultifymessagebox_domain_model_message.seen_by',
+            'label' => 'LLL:EXT:pxa_message_box/Resources/Private/Language/locallang_db.xlf:tx_pxamessagebox_domain_model_message.seen_by',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',

@@ -4,32 +4,32 @@
 		  datatype="plaintext"
 		  original="messages"
 		  date="2017-10-09T10:54:42Z"
-		  product-name="resultify_message_box">
+		  product-name="pxa_message_box">
 		<header/>
 		<body>
-			<trans-unit id="tx_resultifymessagebox_domain_model_message">
+			<trans-unit id="tx_pxamessagebox_domain_model_message">
 				<source>Message</source>
 			</trans-unit>
-			<trans-unit id="tx_resultifymessagebox_domain_model_message.date">
+			<trans-unit id="tx_pxamessagebox_domain_model_message.date">
 				<source>Date</source>
 			</trans-unit>
-			<trans-unit id="tx_resultifymessagebox_domain_model_message.author">
+			<trans-unit id="tx_pxamessagebox_domain_model_message.author">
 				<source>Author</source>
 			</trans-unit>
-			<trans-unit id="tx_resultifymessagebox_domain_model_message.headline">
+			<trans-unit id="tx_pxamessagebox_domain_model_message.headline">
 				<source>Headline</source>
 			</trans-unit>
-			<trans-unit id="tx_resultifymessagebox_domain_model_message.text">
+			<trans-unit id="tx_pxamessagebox_domain_model_message.text">
 				<source>Text</source>
 			</trans-unit>
-			<trans-unit id="tx_resultifymessagebox_domain_model_message.seen_by">
+			<trans-unit id="tx_pxamessagebox_domain_model_message.seen_by">
 				<source>Seen by users</source>
 			</trans-unit>
 
-			<trans-unit id="tx_resultify_message_box_message.name">
+			<trans-unit id="tx_pxa_message_box_message.name">
 				<source>Message</source>
 			</trans-unit>
-			<trans-unit id="tx_resultify_message_box_message.description">
+			<trans-unit id="tx_pxa_message_box_message.description">
 				<source>Adds possibility to show message boxes (notifications) to FE users.</source>
 			</trans-unit>
 		</body>

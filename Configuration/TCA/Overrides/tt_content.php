@@ -5,5 +5,5 @@ defined('TYPO3_MODE') || die('Access denied.');
     'Resultify.ResultifyMessageBox',
     'Message',
     'Message box',
-    'EXT:resultify_message_box/Resources/Public/Icons/message.svg'
+    'EXT:pxa_message_box/Resources/Public/Icons/message.svg'
 );

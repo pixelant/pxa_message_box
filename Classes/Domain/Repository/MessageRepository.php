@@ -1,6 +1,6 @@
 <?php
 
-namespace Resultify\ResultifyMessageBox\Domain\Repository;
+namespace Pixelant\PxaMessageBox\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;

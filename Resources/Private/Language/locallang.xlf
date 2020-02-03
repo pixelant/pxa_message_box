@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-09T10:54:42Z" product-name="resultify_message_box">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-09T10:54:42Z" product-name="pxa_message_box">
 		<header/>
 		<body>
-			<trans-unit id="tx_resultifymessagebox_domain_model_message">
+			<trans-unit id="tx_pxamessagebox_domain_model_message">
 				<source>Message</source>
 			</trans-unit>
 		</body>
