@@ -1,29 +1,63 @@
 <?php
-namespace Resultify\ResultifyMessageBox\Controller;
 
-/***
- *
- * This file is part of the "Message Box" Extension for TYPO3 CMS.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- *  (c) 2017 Alex <alex@pixelant.se>, Resultify
- *
- ***/
+namespace Pixelant\PxaMessageBox\Controller;
 
-use Resultify\ResultifyMessageBox\Utility\DatabaseUtility;
+use Pixelant\PxaMessageBox\Domain\Model\Message;
+use Pixelant\PxaMessageBox\Domain\Repository\MessageRepository;
+use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * MessageController
  */
-class MessageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class MessageController extends ActionController
 {
     /**
-     * @var \Resultify\ResultifyMessageBox\Domain\Repository\MessageRepository
-     * @inject
+     * @var MessageRepository
      */
     protected $messageRepository;
+
+    /**
+     * @var FrontendUserRepository
+     */
+    protected $frontendUserRepository = null;
+
+    /**
+     * Loggen in user ID
+     *
+     * @var int
+     */
+    protected $userId = null;
+
+    /**
+     * @param MessageRepository $messageRepository
+     */
+    public function injectMessageRepository(MessageRepository $messageRepository)
+    {
+        $this->messageRepository = $messageRepository;
+    }
+
+    /**
+     * @param FrontendUserRepository $frontendUserRepository
+     */
+    public function injectFrontendUserRepository(FrontendUserRepository $frontendUserRepository)
+    {
+        $this->frontendUserRepository = $frontendUserRepository;
+    }
+
+    /**
+     * Init
+     */
+    protected function initializeAction()
+    {
+        $userAspect = GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user');
+        if ($userAspect->isLoggedIn()) {
+            $this->userId = $userAspect->get('id');
+        }
+    }
 
     /**
      * action list
@@ -32,66 +66,41 @@ class MessageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction()
     {
-        // get user
-        $user = $GLOBALS['TSFE']->fe_user->user;
-
-        // get storage uid
-        $data = $this->configurationManager->getContentObject()->data;
-        $storagePids = explode(',',$data['pages']);
-
-        if($user['uid'] != NULL && $data['pages'] != '')
-        {
-            // get ids of messages already seen by user
-            $userData = DatabaseUtility::getUserData($user['uid']);
-            $messagesUids = explode(',',$userData);
-
-            // Set sorting
-            $this->messageRepository->setInvertSorting(boolval($this->settings['invertSorting']));
-            
-            // get appropriate messages
-            $messages = $this->messageRepository->findByUidRespectStorage($storagePids, $messagesUids);
-
-            $this->view->assign('messages', $messages);
+        if (!$this->userId) {
+            return;
         }
 
+        // Get appropriate messages
+        $messages = $this->messageRepository->findByNotSeen($this->userId);
+        if ($this->settings['invertSorting']) {
+            $messages = array_reverse($messages->toArray());
+        }
+
+        $this->view->assign('messages', $messages);
     }
 
     /**
-     * action ajax
+     * Close action
+     *
+     * @param Message $message
      * @return void
      */
-    public function ajaxAction()
+    public function closeAction(Message $message)
     {
-        // get user
-        $user = $GLOBALS['TSFE']->fe_user->user;
-
-        // get uid of message that was clicked
-        $messageUid = $this->request->getArgument('uid');
-
-        if($messageUid && $user['uid'] != NULL){
-            // get ids of messages already seen by this user
-            $userData = DatabaseUtility::getUserData($user['uid']);
-            $messagesUids = explode(',',$userData);
-
-            // build correct array of uids to update
-            if($userData == ''){
-                $messagesUidsToUpdate = $messageUid;
-            }else{
-                if (!in_array($messageUid, $messagesUids)) {
-                    array_push($messagesUids, $messageUid);
-                    $messagesUidsToUpdate = implode(",", $messagesUids);
-                }else{
-                    $messagesUidsToUpdate = implode(",", $messagesUids);
-                }    
-            }
-            
-            if(DatabaseUtility::updateUser($user['uid'], $messagesUidsToUpdate)){
-                echo json_encode(array("result" => "updateOK"));
-            }else{
-                echo json_encode(array("result" => "updateError"));
-            }
-        }else{
-            echo json_encode(array("result" => "updateError"));
+        if (!$this->userId) {
+            return;
         }
+
+        /** @var FrontendUser $frontendUser */
+        $frontendUser = $this->frontendUserRepository->findByUid($this->userId);
+
+        $message->addSeenBy($frontendUser);
+        $this->messageRepository->update($message);
+
+        if (GeneralUtility::_GET('type')) {
+            return json_encode(['success' => true]);
+        }
+
+        $this->redirect('list');
     }
 }

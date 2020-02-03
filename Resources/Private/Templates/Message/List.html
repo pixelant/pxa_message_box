@@ -1,35 +1,32 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
+<f:layout name="Default" />
 
-	This Template is responsible for creating a table of domain objects.
+<f:section name="content">
+    <f:if condition="{messages}">
+        <f:for each="{messages}" as="message">
+            <div class="message-box">
+                <f:link.action action="close"
+							   pageType="2378954"
+                               data="{close-message: '1'}"
+							   id="message-box-{message.uid}"
+                               arguments="{message: message}">
+                    <div class="close-message__btn js__close-message"></div>
+                </f:link.action>
 
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	  Resources:
-		Private:
-		  Templates:
-			List.html: keep
+                <div class="message-box__info">
+                    <span class="message-box__info-date">{f:format.date(date: message.date, format: 'Y-m-d')}</span>
+                    <span class="message-box__info-author">{message.author}</span>
+                </div>
 
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+				<f:if condition="{message.headline}">
+                    <h3 class="message-box__header">{message.headline}</h3>
+                </f:if>
 
-	<f:section name="content">
-		<f:flashMessages />
-		<f:if condition="{messages}">
-			<f:for each="{messages}" as="message">
-				<div class="message-box">
-					<f:link.action action="ajax" pageType="2378954" id="message-box-{message.uid}" arguments="{uid: message.uid}"><div class="close-message__btn js__close-message"></div></f:link.action>
-					<div class="message-box__info">
-						<span class="message-box__info-date">{f:format.date(date: message.date, format: 'Y-m-d')}</span>
-						<span class="message-box__info-author">{message.author}</span>
-					</div>
-					<f:if condition="{message.headline}">
-						<h3 class="message-box__header">{message.headline}</h3>
-					</f:if>
-					<f:if condition="{message.text}">
-							<p class="message-box__text">{message.text}</p>
-					</f:if>
-				</div>
-			</f:for>
-		</f:if>
-	</f:section>
+				<f:if condition="{message.text}">
+                    <f:format.html>{message.text}</f:format.html>
+                </f:if>
+            </div>
+        </f:for>
+    </f:if>
+</f:section>
 </html>
