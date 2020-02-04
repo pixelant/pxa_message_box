@@ -1,25 +1,25 @@
-plugin.tx_resultifymessagebox_message {
+plugin.tx_pxamessagebox_message {
     view {
         templateRootPaths {
-            10 = {$plugin.tx_resultifymessagebox_message.view.templateRootPath}
+            10 = {$plugin.tx_pxamessagebox_message.view.templateRootPath}
         }
 
         partialRootPaths {
-            10 = {$plugin.tx_resultifymessagebox_message.view.partialRootPath}
+            10 = {$plugin.tx_pxamessagebox_message.view.partialRootPath}
         }
 
         layoutRootPaths {
-            10 = {$plugin.tx_resultifymessagebox_message.view.layoutRootPath}
+            10 = {$plugin.tx_pxamessagebox_message.view.layoutRootPath}
         }
     }
 
     persistence {
-        storagePid = {$plugin.tx_resultifymessagebox_message.persistence.storagePid}
+        storagePid = {$plugin.tx_pxamessagebox_message.persistence.storagePid}
     }
 
     settings {
         # Set invert sorting for messages
-        invertSorting = {$plugin.tx_resultifymessagebox_message.settings.invertSorting}
+        invertSorting = {$plugin.tx_pxamessagebox_message.settings.invertSorting}
     }
 }
 
@@ -38,9 +38,9 @@ PxaMessageBoxAjaxCall {
     10 = USER
     10 {
         userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-        extensionName = ResultifyMessageBox
+        extensionName = PxaMessageBox
         pluginName = Message
-        vendorName = Resultify
+        vendorName = Pixelant
 
         switchableControllerActions {
             Message {
