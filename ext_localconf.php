@@ -2,7 +2,7 @@
 defined('TYPO3_MODE') || die('Access denied.');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Resultify.ResultifyMessageBox',
+    'Pixelant.PxaMessageBox',
     'Message',
     [
         'Message' => 'list, close'

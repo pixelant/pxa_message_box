@@ -153,7 +153,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'fe_users',
-                'MM' => 'tx_resultifymessagebox_message_feuser_mm',
+                'MM' => 'tx_pxamessagebox_message_feuser_mm',
             ]
         ],
     ],
