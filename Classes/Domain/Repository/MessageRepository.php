@@ -36,6 +36,8 @@ class MessageRepository extends Repository
     {
         $query = $this->createQuery();
 
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
         $query->matching($query->logicalNot(
             $query->contains('seenBy', $userId)
         ));
