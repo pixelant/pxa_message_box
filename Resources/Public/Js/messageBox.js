@@ -8,6 +8,7 @@ $(function () {
 
         var ajaxUrl = $(this).attr('href');
         var currentElement = $(this);
+        currentElement.parent().toggleClass('message-box__collapsed');
 
         $.ajax({
             url: ajaxUrl,
@@ -15,7 +16,7 @@ $(function () {
 
             success: function (data) {
                 if (data.success) {
-                    currentElement.parent().hide();
+                    console.log('1')
                 }
             },
         });

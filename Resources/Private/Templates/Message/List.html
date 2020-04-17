@@ -4,29 +4,34 @@
 <f:section name="content">
     <f:if condition="{messages}">
         <f:for each="{messages}" as="message">
-            <div class="message-box">
+            <div class="message-box {f:if(condition: '{message.priority} == 0', then: 'message-box__important')} {f:if(condition: '{message.priority} == 1', then: 'message-box__notice')}">
                 <f:link.action action="close"
-							   pageType="2378954"
-                               data="{close-message: '1'}"
-							   id="message-box-{message.uid}"
-                               arguments="{message: message}">
+                    pageType="2378954"
+                    data="{close-message: '1'}"
+                    id="message-box-{message.uid}"
+                    arguments="{message: message}">
                     <div class="close-message__btn js__close-message"></div>
                 </f:link.action>
 
-                <div class="message-box__info">
-                    <span class="message-box__info-date">{f:format.date(date: message.date, format: 'Y-m-d')}</span>
-                    <span class="message-box__info-author">{message.author}</span>
-                </div>
+                <f:comment>
+                    <div class="message-box__info">
+                        <span class="message-box__info-date">{f:format.date(date: message.date, format: 'Y-m-d')}</span>
+                        <span class="message-box__info-author">{message.author}</span>
+                    </div>
+                </f:comment>
 
-				<f:if condition="{message.headline}">
+                <f:if condition="{message.headline}">
                     <h3 class="message-box__header">{message.headline}</h3>
                 </f:if>
 
-				<f:if condition="{message.text}">
-                    <f:format.html>{message.text}</f:format.html>
+                <f:if condition="{message.text}">
+                    <div class="message-box__text">
+                        <f:format.html>{message.text}</f:format.html>
+                    </div>
                 </f:if>
             </div>
         </f:for>
     </f:if>
 </f:section>
 </html>
+
