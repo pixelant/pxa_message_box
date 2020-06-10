@@ -19,10 +19,10 @@ return [
         'iconfile' => 'EXT:pxa_message_box/Resources/Public/Icons/message.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, author, headline, text, seen_by',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, priority, date, author, headline, text, seen_by',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, author, headline, text,
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, priority, date, author, headline, text,
          --div--;LLL:EXT:pxa_message_box/Resources/Private/Language/locallang_db.xlf:tx_pxamessagebox_domain_model_message.seen_by, seen_by,
          --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'
         ],
@@ -154,6 +154,21 @@ return [
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'fe_users',
                 'MM' => 'tx_pxamessagebox_message_feuser_mm',
+            ]
+        ],
+        'priority' => [
+            'exclude' => false,
+            'label' => 'Availability',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Viktigt', 0],
+                    ['Notera' , 1]
+                ],
+                'showIconTable' => true,
+                'size' => 1,
+                'maxitems' => 1,
             ]
         ],
     ],

@@ -8,7 +8,7 @@ CREATE TABLE tx_pxamessagebox_domain_model_message (
 	headline varchar(255) DEFAULT '' NOT NULL,
 	text text,
     seen_by int(11) DEFAULT '0' NOT NULL,
-
+    priority tinyint(4) DEFAULT '0' NOT NULL
 );
 
 CREATE TABLE tx_pxamessagebox_message_feuser_mm (

@@ -45,6 +45,13 @@ class Message extends AbstractEntity
     protected $seenBy = null;
 
     /**
+     * priority
+     *
+     * @var int $priority
+     */
+    protected $priority = 0;
+
+    /**
      */
     public function __construct()
     {
@@ -167,4 +174,21 @@ class Message extends AbstractEntity
     {
         $this->seenBy->detach($frontendUser);
     }
+
+    /**
+     * @return int
+     */
+    public function getPriority(): int
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @param int $priority
+     */
+    public function setPriority(int $priority): void
+    {
+        $this->priority = $priority;
+    }
+
 }
