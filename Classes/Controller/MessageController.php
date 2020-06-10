@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 /**
  * MessageController
@@ -24,6 +25,11 @@ class MessageController extends ActionController
      * @var FrontendUserRepository
      */
     protected $frontendUserRepository = null;
+
+    /**
+     * @var PersistenceManager
+     */
+    protected $persistenceManager = null;
 
     /**
      * Loggen in user ID
@@ -46,6 +52,14 @@ class MessageController extends ActionController
     public function injectFrontendUserRepository(FrontendUserRepository $frontendUserRepository)
     {
         $this->frontendUserRepository = $frontendUserRepository;
+    }
+
+    /**
+     * @param PersistenceManager $persistenceManager
+     */
+    public function injectPersistenceManager(PersistenceManager $persistenceManager)
+    {
+        $this->persistenceManager = $persistenceManager;
     }
 
     /**
@@ -75,7 +89,15 @@ class MessageController extends ActionController
         if ($this->settings['invertSorting']) {
             $messages = array_reverse($messages->toArray());
         }
+        /** @var FrontendUser $frontendUser */
+        $frontendUser = $this->frontendUserRepository->findByUid($this->userId);
+        $seen = [];
+        foreach ($messages as $message) {
+            /** @var Message $message */
+            $seen[$message->getUid()] = ($message->getSeenBy()->contains($frontendUser)) ? true : false;
+        }
 
+        $this->view->assign('seen', $seen);
         $this->view->assign('messages', $messages);
     }
 
@@ -94,8 +116,14 @@ class MessageController extends ActionController
         /** @var FrontendUser $frontendUser */
         $frontendUser = $this->frontendUserRepository->findByUid($this->userId);
 
-        $message->addSeenBy($frontendUser);
+        if ($message->getSeenBy()->contains($frontendUser)) {
+            $message->removeSeenBy($frontendUser);
+        } else {
+            $message->addSeenBy($frontendUser);
+        }
         $this->messageRepository->update($message);
+
+        $this->persistenceManager->persistAll();
 
         if (GeneralUtility::_GET('type')) {
             return json_encode(['success' => true]);

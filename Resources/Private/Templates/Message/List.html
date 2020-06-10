@@ -4,7 +4,7 @@
 <f:section name="content">
     <f:if condition="{messages}">
         <f:for each="{messages}" as="message">
-            <div class="message-box {f:if(condition: '{message.priority} == 0', then: 'message-box__important')} {f:if(condition: '{message.priority} == 1', then: 'message-box__notice')}">
+            <div class="message-box <f:if condition='{seen.{message.uid}}'>message-box__collapsed</f:if> {f:if(condition: '{message.priority} == 0', then: 'message-box__important')} {f:if(condition: '{message.priority} == 1', then: 'message-box__notice')}">
                 <f:link.action action="close"
                     pageType="2378954"
                     data="{close-message: '1'}"
